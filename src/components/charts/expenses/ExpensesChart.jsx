@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Chart } from "react-google-charts";
 import { fetchEgresos } from "../../../helpers/getCall/fetchEgresos";
 import { transformValidChart } from "../../../helpers/convert/transformValid";
+import {URL_API } from "../../../settings/index"
 
 const options = {
   title: "Egresos",
@@ -16,7 +17,7 @@ export const ExpensesChart = () => {
   }, []);
 
   const fetchData = () => {
-    fetchEgresos(`http://localhost:3200/expenses/${user}`, { token }).then(
+    fetchEgresos(`${URL_API}/expenses/${user}`, { token }).then(
       (data) => {
         if (data) {
           const dataChart = data.map((expense) => ({

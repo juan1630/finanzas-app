@@ -1,6 +1,7 @@
 import { useState } from "react";
-import Swal from "sweetalert2";
 import { incomesCategories } from "../../db/incomesCategory";
+import Swal from "sweetalert2";
+import {URL_API } from "../../settings/index"
 
 const initialValue = { amount: 0, category: "nomina" };
 
@@ -21,7 +22,7 @@ export const IncomeForm = () => {
     event.preventDefault();
 
     if (isValidForm()) {
-      fetch("http://localhost:3200/income", {
+      fetch(`${URL_API}/income`, {
         body: JSON.stringify({
           ...formState,
           token,

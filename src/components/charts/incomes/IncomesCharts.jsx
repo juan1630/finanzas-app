@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Chart } from "react-google-charts";
 import fetchData from '../../../helpers/getCall/fetchData'
 import { transformValidChart } from "../../../helpers/convert/transformValid";
+import { URL_API } from "../../../settings/index"
 
 
 const options = {
@@ -17,7 +18,7 @@ export const IncomesCharts = () => {
   }, []);
 
   const fetchDataIngresos = () => {
-    fetchData(`http://localhost:3200/income/${user}`, { token }).then(
+    fetchData(`${URL_API}/income/${user}`, { token }).then(
       (data) => {
         if (data) {
           const dataChart = data.map((expense) => ({

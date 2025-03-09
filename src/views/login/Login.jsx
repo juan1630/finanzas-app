@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { URL_API } from '../../settings/index'
 
 import { loginSuccess } from "../../reducers/login/loginSlice";
 
@@ -35,7 +36,7 @@ export const Login = () => {
         }}
         onSubmit={(values, { setSubmitting }) => {
           axios
-            .post("http://localhost:3200/login", { ...values })
+            .post(`${URL_API}/login`, { ...values })
             .then(({ data, status }) => {
               if (status == 200) {
                 localStorage.setItem("token", data.token);
