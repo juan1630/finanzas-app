@@ -1,1 +1,1 @@
-export const URL_API = "http://localhost:3200";
+export const URL_API = "https://tienda-online-mocha.vercel.app/";
