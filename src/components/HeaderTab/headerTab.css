@@ -1,0 +1,47 @@
+.nav-link {
+    width: 50vw;
+}
+.amount-income {
+    width: 95%;
+    margin: 0 auto;
+}
+.btn-close-sesion {
+    font-size: 28px;
+    color: black;
+    display: flex;
+    justify-content: end;
+    margin-bottom: 10px;
+}
+.btn.btn-primary {
+    width: 95%;
+    margin: 0 auto;
+    height: 40px;
+}
+
+.container-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:16px;
+}
+
+.container-income-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-container-income {
+    display: grid;
+    grid-template-columns: repeat( auto-fill , minmax(300px, 1fr));
+}
+
+.table-income { 
+    max-width: 100vw;
+    height: auto;
+    margin-top: 50px;
+}

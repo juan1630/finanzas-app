@@ -1,0 +1,25 @@
+.form-control { 
+    width: 95%;
+    margin: 0 auto;
+}
+
+.w-100.h-100 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.btn.btn-primary {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+label {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
