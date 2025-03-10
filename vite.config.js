@@ -5,22 +5,20 @@ import react from "@vitejs/plugin-react";
 export default ({ mode, command }) => {
   const env = loadEnv(mode, process.cwd(), "");
 
-  console.log(env)
-
   if (command == "serve") {
     return defineConfig({
       plugins: [react()],
       define: {
         //.env
-        "process.env": JSON.stringify(env.local),
+        base: env.VITE_API_URL,
       },
     });
-  }else {
+  }else if(command == 'build'){
     return defineConfig({
       plugins: [react()],
       define: {
         //.env
-        "process.env": JSON.stringify(env.prod)
+        base: env.VITE_API_URL
       },
     });
   }
