@@ -5,6 +5,8 @@ import react from "@vitejs/plugin-react";
 export default ({ mode, command }) => {
   const env = loadEnv(mode, process.cwd(), "");
 
+  console.log(env)
+
   if (command == "serve") {
     return defineConfig({
       plugins: [react()],
