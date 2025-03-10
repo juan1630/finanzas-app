@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { URL_API } from '../../settings/index'
 
 import { loginSuccess } from "../../reducers/login/loginSlice";
 

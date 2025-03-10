@@ -1,7 +1,6 @@
 import { useForm } from "../../hooks/useForm";
 import { postDataFetch } from "../../helpers/api/postDataFetch";
 import { expensesCategories } from "../../db/expensesCategory";
-import { URL_API } from "../../settings/index"
 import Swal from "sweetalert2";
 
 export const Expenses = () => {
@@ -13,7 +12,7 @@ export const Expenses = () => {
   const onSubmit = () => {
     const token = localStorage.getItem("token");
     const user = localStorage.getItem("user");
-    postDataFetch(`${URL_API}/expenses`, {
+    postDataFetch(`${VITE_URL_BACKEND}/expenses`, {
       ...formState,
       token,
       user,

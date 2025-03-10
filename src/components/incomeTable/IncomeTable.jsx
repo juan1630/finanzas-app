@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import fetchData from "../../helpers/getCall/fetchData";
-import {URL_API } from '../../settings/index'
 import '../components.css'
 
 export function IncomeTable() {
@@ -10,7 +9,7 @@ export function IncomeTable() {
   const [incomesListState, setIncomesListState] = useState([]);
 
   useEffect(() => {
-    fetchData(`${URL_API}/income/${user}`, { token }).then(
+    fetchData(`${import.meta.env.VITE_URL_BACKEND}/income/${user}`, { token }).then(
       (data) => {
         if (data.length > 0) {
           setIncomesListState(data);
