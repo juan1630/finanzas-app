@@ -36,7 +36,7 @@ export const Login = () => {
         }}
         onSubmit={(values, { setSubmitting }) => {
           axios
-            .post(`${URL_API}/login`, { ...values })
+            .post(`${import.meta.env.VITE_URL_BACKEND}/login`, { ...values })
             .then(({ data, status }) => {
               if (status == 200) {
                 localStorage.setItem("token", data.token);
