@@ -1,13 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Chart } from "react-google-charts";
 import { fetchEgresos } from "../../../helpers/getCall/fetchEgresos";
 import { transformValidChart } from "../../../helpers/convert/transformValid";
-
+import ExpensesContext from '../../../context/expensesContext'
 
 const options = {
   title: "Egresos",
 };
+
 export const ExpensesChart = () => {
+  
+  const { expensesState, setExpensesState} = useContext(ExpensesContext);
   const [dataState, setDataState] = useState([]);
   const user = localStorage.getItem("user");
   const token = localStorage.getItem("token");
@@ -17,25 +20,31 @@ export const ExpensesChart = () => {
   }, []);
 
   const fetchData = () => {
-    fetchEgresos(`${import.meta.env.VITE_URL_BACKEND}/expenses/${user}`, { token }).then(
-      (data) => {
-        if (data) {
-          const dataChart = data.map((expense) => ({
-            amount: expense.amount,
-            category: expense.category,
-          }));
-
-          const dataTranansform = transformValidChart(dataChart);
-          const dataToChart = Object.keys(dataTranansform).map((key) => [
-            key,
-            dataTranansform[key],
-          ]);
-
-          const dataToChart2 = [["egreso", "por mes "], ...dataToChart];
-          setDataState(dataToChart2);
+    if( expensesState == null ){
+      fetchEgresos(`${import.meta.env.VITE_URL_BACKEND}/expenses/${user}`, { token }).then(
+        (data) => {
+          if (data) {
+            const dataChart = data.map((expense) => ({
+              amount: expense.amount,
+              category: expense.category,
+            }));
+  
+            const dataTranansform = transformValidChart(dataChart);
+            const dataToChart = Object.keys(dataTranansform).map((key) => [
+              key,
+              dataTranansform[key],
+            ]);
+  
+            const dataToChart2 = [["Egreso", "Por mes "], ...dataToChart];
+            setDataState(dataToChart2);
+            setExpensesState(dataToChart2);
+          }
         }
-      }
-    );
+      );
+    } else {
+
+      setDataState(expensesState)
+    }
   };
 
   return (
