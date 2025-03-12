@@ -5,6 +5,7 @@ import { IncomeForm } from "../components/income-form/IncomeForm";
 import { Expenses } from "../components/expenses/Expenses";
 import { ProtectedRoutes } from "./protectedRoutes";
 import { Dashboard } from '../views/Dashboard';
+import {PprForm} from "../components/PprForm/PprForm"
 
 export const CustomRoutes = () => {
   return (
@@ -16,6 +17,7 @@ export const CustomRoutes = () => {
           <Route element={<IncomeForm />} path="ingresos" />
           <Route element={<Expenses />} path="egresos" />
           <Route element={ <Dashboard />} path="dashboard" />
+          <Route element={<PprForm />} path="ppr" />
         </Route>
       </Routes>
     </BrowserRouter>

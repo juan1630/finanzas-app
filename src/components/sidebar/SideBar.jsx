@@ -25,6 +25,9 @@ export const SideBar = () => {
           <NavLink to="/home/egresos"> Egresos</NavLink>
         </li>
         <li>
+          <NavLink to="/home/ppr"> PPR</NavLink>
+        </li>
+        <li>
           <a className="btn-close-sesion" onClick={onLogout}>
             Cerra sesion
           </a>
