@@ -50,7 +50,7 @@ export const IncomesCharts = () => {
         chartType="PieChart"
         width="100%"
         height="100%"
-        data={dataState}
+        data={incomeState}
         options={options}
         legendToggle
       />
