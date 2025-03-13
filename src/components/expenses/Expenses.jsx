@@ -12,7 +12,7 @@ export const Expenses = () => {
   const onSubmit = () => {
     const token = localStorage.getItem("token");
     const user = localStorage.getItem("user");
-    postDataFetch(`${VITE_URL_BACKEND}/expenses`, {
+    postDataFetch(`${import.meta.env.VITE_URL_BACKEND}/expenses`, {
       ...formState,
       token,
       user,
