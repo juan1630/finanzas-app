@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 export const PprForm = () => {
   const [formState, setFormState] = useState({});
@@ -19,8 +20,16 @@ export const PprForm = () => {
         },
         method: "POST",
       })
-        .then((data) => console.log(data))
-        .catch((error) => console.log(error));
+        .then((data) => {
+          if (data.ok) {
+            Swal.fire("Abono al PPR", "", "success");
+            setFormState({})
+          }
+        })
+        .catch((error) => {
+          Swal.fire("Hubo un error", "", "error");
+          console.error(error);
+        });
     }
   };
   return (
@@ -38,7 +47,11 @@ export const PprForm = () => {
           />
         </div>
         <div className="w-90 mx-auto">
-          <button  onClick={onSubmit} type="button" className="w-100 btn btn-primary">
+          <button
+            onClick={onSubmit}
+            type="button"
+            className="w-100 btn btn-primary"
+          >
             {" "}
             Agregar{" "}
           </button>

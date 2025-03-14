@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 export const Expenses = () => {
   const { onChange, onReset, amount, category, formState } = useForm({
     amount: 0,
-    category: "",
+    category: "electricidad",
   });
 
   const onSubmit = () => {

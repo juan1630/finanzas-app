@@ -1,5 +1,5 @@
 export const expensesCategories = [
-  { label: "electridad", value: "electricidad", id: 1 },
+  { label: "Electridad", value: "electricidad", id: 1 },
   { label: "Internet", value: "Internet", id: 2 },
   { label: "Streaming", value: "streaming", id: 3 },
   { label: "Carro", value: "carro", id: 4 },
