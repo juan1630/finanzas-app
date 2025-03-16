@@ -1,7 +1,9 @@
+import { useState } from "react"
 import { Formik } from "formik";
 
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+import ClimbingBoxLoader  from "react-spinners/ClimbingBoxLoader";
 import Swal from "sweetalert2";
 import axios from "axios";
 
@@ -9,9 +11,16 @@ import { loginSuccess } from "../../reducers/login/loginSlice";
 
 import './login.css'
 
+const override = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+};
+
 export const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
   return (
     <div className="w-100 h-100">
@@ -34,6 +43,7 @@ export const Login = () => {
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
+          setLoading(prev  => !prev);
           axios
             .post(`${import.meta.env.VITE_URL_BACKEND}/login`, { ...values })
             .then(({ data, status }) => {
@@ -41,11 +51,13 @@ export const Login = () => {
                 localStorage.setItem("token", data.token);
                 localStorage.setItem('user', data.id);
                 dispatch(loginSuccess({ auth: true, token: data.token }));
+                setLoading(prev  => !prev);
                 navigate("/home/dashboard");
               }
             })
             .catch(({ response }) => {
               if (response.statusText == "Bad Request") {
+                setLoading(prev  => !prev);
                 Swal.fire({
                   title: "Hubo un error",
                   icon: "error",
@@ -116,6 +128,14 @@ export const Login = () => {
           </form>
         )}
       </Formik>
+      <ClimbingBoxLoader 
+        color={"#000"}
+        loading={loading}
+        cssOverride={override}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
     </div>
   );
 };
