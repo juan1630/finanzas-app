@@ -12,3 +12,10 @@
 a { 
     text-align: center;
 }
+
+.grid-sidebar-items {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 20px;
+}

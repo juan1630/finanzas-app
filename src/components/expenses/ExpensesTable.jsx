@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
-import fetchData from "../../helpers/getCall/fetchData";
+import {fetchEgresos} from "../../helpers/getCall/fetchEgresos";
 import { useDispatch } from "react-redux";
 import { logout } from "../../reducers/login/loginSlice"
 import "../components.css";
 
-export function IncomeTable() {
+export function ExpensesTable() {
   const dispatch = useDispatch();
   const user = localStorage.getItem("user");
   const token = localStorage.getItem("token");
 
-  const [incomesListState, setIncomesListState] = useState([]);
+  const [expensesListState, setexpensesListState] = useState([]);
 
   useEffect(() => {
-    fetchData(`${import.meta.env.VITE_URL_BACKEND}/income/${user}`, {
+    fetchEgresos(`${import.meta.env.VITE_URL_BACKEND}/expenses/${user}`, {
       token,
     }).then((data) => {
       if (data.length > 0) {
-        setIncomesListState(data);
+        setexpensesListState(data);
       }
     }).catch(error => {
       console.log(error)
@@ -38,7 +38,7 @@ export function IncomeTable() {
           </tr>
         </thead>
         <tbody>
-          {incomesListState.map(
+          {expensesListState.map(
             ({ amount, category, created_at, _id }, index) => (
               <tr key={_id}>
                 <th scope="row"> {index + 1} </th>
@@ -52,7 +52,7 @@ export function IncomeTable() {
       </table>
       <h4>
           Total: $
-          {incomesListState.reduce(
+          {expensesListState.reduce(
             (acum, currentAmount) =>  acum + currentAmount.amount,
             0
           )} .00

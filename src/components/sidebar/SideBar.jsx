@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from 'react-router';
 import { useDispatch } from "react-redux";
 import { logout } from "../../reducers/login/loginSlice";
+import '../sidebar-styles.css'
 
 export const SideBar = () => {
   
@@ -14,7 +15,7 @@ export const SideBar = () => {
   };
   return (
     <aside>
-      <ul>
+      <ul className='grid-sidebar-items' >
         <li>
           <NavLink to="/home/dashboard"> Home</NavLink>
         </li>
