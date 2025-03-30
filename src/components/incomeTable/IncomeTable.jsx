@@ -42,7 +42,7 @@ export function IncomeTable() {
             ({ amount, category, created_at, _id }, index) => (
               <tr key={_id}>
                 <th scope="row"> {index + 1} </th>
-                <td>{amount}</td>
+                <td>$ {amount}.00</td>
                 <td>{category}</td>
                 <td>{new Date(created_at).toLocaleDateString("en-US")}</td>
               </tr>

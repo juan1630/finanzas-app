@@ -5,7 +5,7 @@ import { Home } from "../views/home/Home";
 import { ExpensesView } from "../views/expenses/ExpensesView";
 import { ProtectedRoutes } from "./protectedRoutes";
 import { Dashboard } from '../views/Dashboard';
-import {PprForm} from "../components/PprForm/PprForm"
+import { PprView } from "../views/ppr/PprView"
 import { Income } from "../views/incomeView/Income"
 
 export const CustomRoutes = () => {
@@ -18,7 +18,7 @@ export const CustomRoutes = () => {
           <Route element={<Income />} path="ingresos" />
           <Route element={<ExpensesView />} path="egresos" />
           <Route element={ <Dashboard />} path="dashboard" />
-          <Route element={<PprForm />} path="ppr" />
+          <Route element={<PprView />} path="ppr" />
         </Route>
       </Routes>
     </BrowserRouter>
