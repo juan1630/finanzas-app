@@ -18,13 +18,14 @@ export const useHandleData = (url) => {
         setIsLoading(false);
         if (data.length > 0) {
           setDataList(data);
+        }else {
+            setHasError(true)
         }
       })
       .catch((error) => {
         setIsLoading(false);
         console.log(error);
-        setHasError(error.error);
-        if (error.message == "invalid token") {
+        if (error.error.message == "invalid token") {
           dispatch(logout());
           localStorage.clear();
         }
