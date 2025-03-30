@@ -2,8 +2,11 @@ import { useHandleData } from "../../hooks/useHandleData";
 
 export const PprTable = () => {
   const user = localStorage.getItem("user");
+  const token = localStorage.getItem("token");
+
   const { dataList, isLoading, hasError } = useHandleData(
-    `${import.meta.env.VITE_URL_BACKEND}/ppr/${user}`
+    `${import.meta.env.VITE_URL_BACKEND}/ppr/${user}`,
+    token
   );
 
   return (

@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchEgresos } from "../helpers/getCall/fetchEgresos";
 
-const token = localStorage.getItem("token");
-
-export const useHandleData = (url) => {
+export const useHandleData = (url, token) => {
   const [dataList, setDataList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(null);
