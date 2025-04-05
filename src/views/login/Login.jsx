@@ -132,7 +132,7 @@ export const Login = () => {
         color={"#000"}
         loading={loading}
         cssOverride={override}
-        size={150}
+        size={70}
         aria-label="Loading Spinner"
         data-testid="loader"
       />
