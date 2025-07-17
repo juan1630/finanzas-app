@@ -3,7 +3,7 @@ import { Formik } from "formik";
 
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-import ClimbingBoxLoader  from "react-spinners/ClimbingBoxLoader";
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import Swal from "sweetalert2";
 import axios from "axios";
 
@@ -43,7 +43,7 @@ export const Login = () => {
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
-          setLoading(prev  => !prev);
+          setLoading(prev => !prev);
           axios
             .post(`${import.meta.env.VITE_URL_BACKEND}/login`, { ...values })
             .then(({ data, status }) => {
@@ -51,13 +51,13 @@ export const Login = () => {
                 localStorage.setItem("token", data.token);
                 localStorage.setItem('user', data.id);
                 dispatch(loginSuccess({ auth: true, token: data.token }));
-                setLoading(prev  => !prev);
+                setLoading(prev => !prev);
                 navigate("/home/dashboard");
               }
             })
             .catch(({ response }) => {
               if (response.statusText == "Bad Request") {
-                setLoading(prev  => !prev);
+                setLoading(prev => !prev);
                 Swal.fire({
                   title: "Hubo un error",
                   icon: "error",
@@ -79,12 +79,12 @@ export const Login = () => {
             <h2 className="text-white text-center text-3xl">Inicia sesion</h2>
             <div className="mt-4">
               <div className="mt-2">
-              <label
-                htmlFor="email"
-                className="m-0"
-              >
-                Email
-              </label>
+                <label
+                  htmlFor="email"
+                  className="m-0"
+                >
+                  Email
+                </label>
                 <input
                   type="email"
                   name="email"
@@ -99,7 +99,7 @@ export const Login = () => {
             </div>
             <div className="mt-4">
               <div className="mt-2">
-              <label
+                <label
                   htmlFor="password"
                   className="m-0 p-0"
                 >
@@ -130,7 +130,7 @@ export const Login = () => {
           </form>
         )}
       </Formik>
-      <ClimbingBoxLoader 
+      <ClimbingBoxLoader
         color={"#000"}
         loading={loading}
         cssOverride={override}
