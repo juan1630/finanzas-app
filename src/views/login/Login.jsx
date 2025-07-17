@@ -23,7 +23,7 @@ export const Login = () => {
   const [loading, setLoading] = useState(false);
 
   return (
-    <div className="w-100 h-100">
+    <div className="w-full mt-4 h-screen flex  justify-center items-center">
       <Formik
         initialValues={{ email: "", password: "" }}
         validate={(values) => {
@@ -75,12 +75,13 @@ export const Login = () => {
           handleChange,
           errors,
         }) => (
-          <form className="" onSubmit={handleSubmit}>
+          <form className="w-[90%] mx-auto flex flex-col gap-5 shadow-sm border border-slate-200 rounded-lg p-4" onSubmit={handleSubmit}>
             <h2 className="text-white text-center text-3xl">Inicia sesion</h2>
             <div className="mt-4">
               <div className="mt-2">
               <label
                 htmlFor="email"
+                className="m-0"
               >
                 Email
               </label>
@@ -91,7 +92,7 @@ export const Login = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
-                  className="form-control"
+                  className="text-base bg-gray-400 p-2 rounded text-white w-full mt-2 placeholder:text-white focus:outline-none"
                 />
                 {errors.email && touched.email && errors.email}
               </div>
@@ -100,6 +101,7 @@ export const Login = () => {
               <div className="mt-2">
               <label
                   htmlFor="password"
+                  className="m-0 p-0"
                 >
                   Password
                 </label>
@@ -110,7 +112,7 @@ export const Login = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
-                  className="form-control"
+                  className="text-base bg-gray-400 p-2 rounded text-white w-full mt-2 placeholder:text-white focus:outline-none"
                 />
               </div>
               {errors.password && touched.password && errors.password}
@@ -120,7 +122,7 @@ export const Login = () => {
               <button
                 onClick={handleSubmit}
                 type="submit"
-                className="btn btn-primary"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded p-2 w-full"
               >
                 Sign in
               </button>
